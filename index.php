@@ -32,6 +32,7 @@
   // Changes the status on the page
   function statusChangeCallback(response) {
     if (response.status === 'connected') {
+      document.getElementById('status').innerHTML = 'Logged in.';
       testAPI();
     } else {
       document.getElementById('status').innerHTML = 'Please log into this webpage.';
@@ -41,7 +42,8 @@
   // Query the Graph API and update the page with the user name
   function testAPI() {
     FB.api('/me', function(response) {
-      document.getElementById('status').innerHTML = 'Logged in as ' + response.name;
+      console.log(response);
+      document.getElementById('name').innerHTML = 'Your name is ' + response.name;
       document.getElementById('birthday').innerHTML = 'Your birthday is ' + response.birthday;
     });
   }
