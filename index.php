@@ -3,6 +3,9 @@
   <title>Website name goes here</title>
 </head>
 <body>
+  <div>Hello World!</div>
+  <br />
+  <br />
   <!--TODO: Add JavaScript SDK here-->
 
   <!--TODO: Add Facebook Login button here-->
