@@ -9,7 +9,7 @@
 
   <!--TODO: Add Facebook Login button here-->
   <!--Add `data-onlogin="checkLoginState();"` to trigger the JavaScript code below after login-->
-  <div class="fb-login-button" data-onlogin="checkLoginState();" data-width="" data-size="large" data-button-type="continue_with" data-auto-logout-link="false" data-use-continue-as="false"></div>
+  <div class="fb-login-button" data-scope="user_birthday" data-onlogin="checkLoginState();" data-width="" data-size="large" data-button-type="continue_with" data-auto-logout-link="false" data-use-continue-as="false"></div>
 
   <div id="status"></div>
   <br />
@@ -41,8 +41,9 @@
 
   // Query the Graph API and update the page with the user name
   function testAPI() {
-    FB.api('/me?fields=id,name', function(response) {
+    FB.api('/me?fields=id,name,birthday', function(response) {
       document.getElementById('name').innerHTML = 'Your name is ' + response.name;
+      document.getElementById('birthday').innerHTML = 'Your birthday is ' + response.birthday;
     });
   }
 
