@@ -8,7 +8,7 @@
   <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v5.0&appId=2469375149997342"></script>
 
   <!--TODO: Add Facebook Login button here-->
-  <div class="fb-login-button" data-onlogin="checkLoginState();" data-width="" data-size="large" data-button-type="continue_with" data-auto-logout-link="false" data-use-continue-as="false"></div>
+  <div class="fb-login-button" data-onlogin="checkLoginState();" data-width="" data-size="large" data-button-type="continue_with" data-auto-logout-link="true" data-use-continue-as="false"></div>
 
   <div id="status"></div>
   <br />
@@ -25,8 +25,6 @@
   }
 
   function statusChangeCallback(response) {
-    console.log('statusChangeCallback');
-    console.log(response);
     if (response.status === 'connected') {
       testAPI();
     } else {
