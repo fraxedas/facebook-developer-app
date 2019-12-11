@@ -41,7 +41,7 @@
 
   // Query the Graph API and update the page with the user name
   function testAPI() {
-    FB.api('/me', function(response) {
+    FB.api('/me?fields=id,name,birthday', function(response) {
       console.log(response);
       document.getElementById('name').innerHTML = 'Your name is ' + response.name;
       document.getElementById('birthday').innerHTML = 'Your birthday is ' + response.birthday;
