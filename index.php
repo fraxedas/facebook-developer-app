@@ -4,12 +4,9 @@
 </head>
 <body>
   <!--TODO: Add JavaScript SDK here-->
-  <div id="fb-root"></div>
-  <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v5.0&appId=2469375149997342"></script>
 
   <!--TODO: Add Facebook Login button here-->
   <!--Add `data-onlogin="checkLoginState();"` to trigger the JavaScript code below after login-->
-  <div class="fb-login-button" data-scope="user_birthday" data-onlogin="checkLoginState();" data-width="" data-size="large" data-button-type="continue_with" data-auto-logout-link="false" data-use-continue-as="false"></div>
 
   <div id="status"></div>
   <br />
@@ -41,15 +38,14 @@
 
   // Query the Graph API and update the page with the user name
   function testAPI() {
-    FB.api('/me?fields=id,name,birthday', function(response) {
+    FB.api('/me?fields=id,name', function(response) {
       document.getElementById('name').innerHTML = 'Your name is ' + response.name;
-      document.getElementById('birthday').innerHTML = 'Your birthday is ' + response.birthday;
     });
   }
 
   window.fbAsyncInit = function() {
     FB.init({
-      appId      : '2469375149997342',       // TODO: replace with your App ID
+      appId      : '{your-app-id}',          // TODO: replace with your App ID
       cookie     : true,                     // Enable cookies to allow the server to access the session.
       xfbml      : true,                     // Parse social plugins on this webpage.
       version    : 'v5.0'
