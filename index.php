@@ -1,4 +1,4 @@
-<html>
+~~<html>
 <head>
   <title>Website name goes here</title>
 </head>
@@ -48,7 +48,7 @@
 
   window.fbAsyncInit = function() {
     FB.init({
-      appId      : '{your-app-id}',          // TODO: replace with your App ID
+      appId      : '483866386834921',          // TODO: replace with your App ID
       cookie     : true,                     // Enable cookies to allow the server to access the session.
       xfbml      : true,                     // Parse social plugins on this webpage.
       version    : 'v5.0'
