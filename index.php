@@ -1,63 +1,66 @@
-~~<html>
+<!DOCTYPE html>
+<html>
 <head>
-  <title>Facebook Developer Application</title>
+<title>Facebook Login JavaScript Example</title>
+<meta charset="UTF-8">
 </head>
 <body>
-  <div>Hello World!</div>
-  <br />
-  <br />
-  <!--TODO: Add JavaScript SDK here-->
-
-  <!--TODO: Add Facebook Login button here-->
-  <!--Add `data-onlogin="checkLoginState();"` to trigger the JavaScript code below after login-->
-
-  <div id="status"></div>
-  <br />
-  <br />
-  <div id="name"></div>
-  <br />
-  <div id="birthday"</div>
-</body>
 <script>
-  // Below is JavaScript code to update the status on the page every time
-  // the page is loaded or the user finishes logging in
 
-  // Call this function after login is complete to check if the user is logged in
-  function checkLoginState() {
-    FB.getLoginStatus(function(response) {
+  function statusChangeCallback(response) {  // Called with the results from FB.getLoginStatus().
+    console.log('statusChangeCallback');
+    console.log(response);                   // The current login status of the person.
+    if (response.status === 'connected') {   // Logged into your webpage and Facebook.
+      testAPI();  
+    } else {                                 // Not logged into your webpage or we are unable to tell.
+      document.getElementById('status').innerHTML = 'Please log ' +
+        'into this webpage.';
+    }
+  }
+
+
+  function checkLoginState() {               // Called when a person is finished with the Login Button.
+    FB.getLoginStatus(function(response) {   // See the onlogin handler
       statusChangeCallback(response);
     });
   }
 
-  // Changes the status on the page
-  function statusChangeCallback(response) {
-    if (response.status === 'connected') {
-      document.getElementById('status').innerHTML = 'Logged in.';
-      testAPI();
-    } else {
-      document.getElementById('status').innerHTML = 'Please log into this webpage.';
-    }
-  }
-
-  // Query the Graph API and update the page with the user name
-  function testAPI() {
-    FB.api('/me?fields=id,name', function(response) {
-      document.getElementById('name').innerHTML = 'Your name is ' + response.name;
-    });
-  }
 
   window.fbAsyncInit = function() {
     FB.init({
-      appId      : '483866386834921',          // TODO: replace with your App ID
+      appId      : '483866386834921',
       cookie     : true,                     // Enable cookies to allow the server to access the session.
       xfbml      : true,                     // Parse social plugins on this webpage.
-      version    : 'v5.0'
+      version    : '14'                      // Use this Graph API version for this call.
     });
 
 
     FB.getLoginStatus(function(response) {   // Called after the JS SDK has been initialized.
-      statusChangeCallback(response);        // Get the login status and change the status
+      statusChangeCallback(response);        // Returns the login status.
     });
   };
+ 
+  function testAPI() {                      // Testing Graph API after login.  See statusChangeCallback() for when this call is made.
+    console.log('Welcome!  Fetching your information.... ');
+    FB.api('/me', function(response) {
+      console.log('Successful login for: ' + response.name);
+      document.getElementById('status').innerHTML =
+        'Thanks for logging in, ' + response.name + '!';
+    });
+  }
+
 </script>
+
+
+<!-- The JS SDK Login Button -->
+
+<fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
+</fb:login-button>
+
+<div id="status">
+</div>
+
+<!-- Load the JS SDK asynchronously -->
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js"></script>
+</body>
 </html>
