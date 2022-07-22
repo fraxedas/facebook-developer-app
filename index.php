@@ -1,6 +1,6 @@
 ~~<html>
 <head>
-  <title>Website name goes here</title>
+  <title>Facebook Developer Application</title>
 </head>
 <body>
   <div>Hello World!</div>
