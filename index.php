@@ -13,8 +13,7 @@
     if (response.status === 'connected') {   // Logged into your webpage and Facebook.
       testAPI();  
     } else {                                 // Not logged into your webpage or we are unable to tell.
-      document.getElementById('status').innerHTML = 'Please log ' +
-        'into this webpage.';
+      document.getElementById('status').innerHTML = 'Please log into this webpage.';
     }
   }
 
@@ -28,12 +27,13 @@
 
   window.fbAsyncInit = function() {
     FB.init({
-      appId      : '483866386834921',
+      appId      : '559903245860899',
       cookie     : true,                     // Enable cookies to allow the server to access the session.
       xfbml      : true,                     // Parse social plugins on this webpage.
       version    : 'v14.0'                      // Use this Graph API version for this call.
     });
-
+    
+    FB.AppEvents.logPageView();  
 
     FB.getLoginStatus(function(response) {   // Called after the JS SDK has been initialized.
       statusChangeCallback(response);        // Returns the login status.
@@ -53,14 +53,13 @@
 
 
 <!-- The JS SDK Login Button -->
-
-<fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
-</fb:login-button>
+<div class="fb-login-button" data-width="" data-size="large" data-button-type="continue_with" data-layout="rounded" data-auto-logout-link="true" data-use-continue-as="true"></div>
 
 <div id="status">
 </div>
 
 <!-- Load the JS SDK asynchronously -->
-<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js"></script>
+<div id="fb-root"></div>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v14.0&appId=639784414157491&autoLogAppEvents=1" nonce="SIV5BbJy"></script>
 </body>
 </html>
